@@ -20,6 +20,24 @@ public class YTGeneric {
 	@FindBy(xpath = "//html")
 	WebElement htmlProperties;
 	
+	@FindBy(xpath = "(//yt-formatted-string[@id='text'])[2]")
+	WebElement loginButton;
+	
+	@FindBy(xpath = "//*[@id=\"email\"]")
+	WebElement loginEmail;
+	
+	@FindBy(id = "img")
+	WebElement userButton;
+	
+	public boolean loginEmailCheck(String email) {
+		userButton.click();
+		return email.equalsIgnoreCase(loginEmail.getText());
+	}
+	
+	public void pressLogin() {
+		loginButton.click();
+	}
+	
 	public YTGeneric(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);

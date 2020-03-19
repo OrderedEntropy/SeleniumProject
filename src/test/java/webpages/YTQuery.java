@@ -3,24 +3,27 @@ package webpages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import utility.DriverSingleton;
 
-public class YTQuery {
+public class YTQuery extends YTGeneric {
+	public YTQuery(WebDriver driver) {
+		super(driver);
+		PageFactory.initElements(driver, this);
+	}
+
 //	https://www.youtube.com/results?search_query=hi
-	//*[@id="contents"]
-	
+	// *[@id="contents"]
+
 	@FindBy(xpath = "(//yt-icon[@id='contents'])")
 	WebElement trendingTab;
-	
+
 	public static void main(String[] args) {
 		WebDriver driver = DriverSingleton.getDriver();
 	}
-	
-	
-	
-}
 
+}
 
 //
 //@FindBy(name = "search_query")

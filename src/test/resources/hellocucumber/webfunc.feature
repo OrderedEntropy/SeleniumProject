@@ -23,3 +23,19 @@ Feature: Youtube basic functionality
       | Friday                   | kfVsfOSbJY0 |
       | Virtual Insanity         | 4JkIs37a2JE |
       | Fell In Love With A Girl | fTH71AAxXmM |
+
+  Scenario Outline: I open a video directly
+    Given I type in a "<term>"
+    Then I should be taken "<result>"
+
+    Examples: 
+      | term        | result          |
+      | ph8LyNIT9sg | The Road to PS5 |
+
+  Scenario Outline: I open a video that doesn't exist
+    Given I type in a "<term>"
+    Then I should be taken video unavailable page
+
+    Examples: 
+      | term       |
+      | ph8LyIT9sg |
